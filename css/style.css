@@ -1,0 +1,584 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+/* color we use */
+:root{
+    --orange: #ff9f0d;
+    --black: #192a56;
+    --light-color: #666;
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+}
+body {
+    overflow: hidden; /* Hide scrollbars */
+  }
+/* all */
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+
+/* all section */
+section{
+    padding: 5rem 9%;
+}
+
+
+section:nth-child(even){
+    background: #eee;
+}
+
+
+
+.sub-heading{
+    text-align: center;
+    color: var(--orange);
+    font-size: 2.5rem;
+    padding-top: 1rem;
+}
+
+
+.heading{
+    text-align: center;
+    color: var(--black);
+    font-size: 3rem;
+    padding-top: .5rem;
+    text-transform: uppercase;
+}
+
+.type{
+    text-align: center;
+    color: var(--black);
+    font-size: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    background: #eee;
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    color: #fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .8rem 3rem;
+}
+
+.btn:hover{
+    background: var(--orange);
+    letter-spacing: .1rem;
+}
+
+
+/* navigation */
+header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff;
+    padding: 1rem 7%;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+header .Logo{
+    color: var(--black);
+    font-size: 2.5rem;
+    font-weight: bolder;    
+}
+
+header .Logo i{
+    color: var(--orange);   
+}
+
+header .navbar a{
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    color:var(--light-color);
+}
+
+header .navbar a:hover{
+    color: #fff;
+    background: var(--orange);
+}
+
+header .icons i,
+header .icons a{
+    cursor: pointer;
+    margin-left: .5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--black);
+    border-radius: 50%;
+    background: #eee;
+}
+
+header .icons i:hover,
+header .icons a:hover{
+    color: #eee;
+    color: var(--orange);
+    transform: rotate(360deg);
+}
+
+header .icons #menu-bars{
+    display: none;
+}
+
+
+/* silder */
+.home .home-slider .slide {
+    display: flex;
+    align-items: center; /* rata tengah secara vertikal */
+    justify-content: space-between; /* pisahkan teks & gambar */
+    gap: 2rem;
+    padding-top: 9rem;
+    flex-wrap: wrap; /* supaya rapi di layar kecil */
+}
+
+.home .home-slider .slide .content {
+    flex: 1 1 50%;
+}
+
+.home .home-slider .slide .image {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: flex-end; /* gambar ke kanan */
+    align-items: center;
+}
+
+.home .home-slider .slide .image img {
+    width: 70%; /* perkecil ukuran gambar */
+    height: auto;
+    border-radius: 5px; /* sudut membulat */
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* bayangan lembut */
+    transition: transform 0.3s ease;
+}
+
+
+.home .home-slider .slide .content span {
+    color: var(--orange);
+    font-size: 2.5rem;
+}
+
+.home .home-slider .slide .content h3 {
+    color: var(--black);
+    font-size: 5rem; /* lebih kecil dari 7rem agar seimbang */
+}
+
+.home .home-slider .slide .content p {
+    color: var(--light-color);
+    font-size: 2rem;
+    padding: .5rem 0;
+    line-height: 1.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--orange);
+}
+
+
+
+
+/* jewelry */
+.jewelry .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+.jewelry .box-container .box{
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0,0,0,.2);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+}
+
+.fluid-container .box {
+  width: 100%; /* Occupy full width of its parent */
+  max-width: 1200px; /* Optional: Set a maximum width for larger screens */
+  margin-left: auto; /* Center the container horizontally */
+  margin-right: auto; /* Center the container horizontally */
+  padding: 20px; /* Add some internal spacing */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.jewelry .box-container .box img{
+    height: 17rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+.jewelry .box-container .box h3{
+    color: var(--black);
+    font-size: 2.5rem;
+}
+
+.jewelry .box-container .box span{
+    color: var(--orange);
+    font-weight: bolder;
+    font-size: 3rem;
+}
+
+
+
+/* about us */
+.about .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.about .row .image{
+    flex: 1 1 45rem;
+}
+
+.about .row .image img{
+    width: 95%;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.about .row .content{
+    flex: 1 1 45rem;
+}
+
+.about .row .content h3{
+    color: var(--black);
+    font-size: 4rem;
+    padding: .5rem 0;
+}
+
+.about .row .content p{
+    color: var(--light-color);
+    font-size: 1.5rem;
+    text-align: justify;
+    padding: .5rem 0;
+    line-height: 2;
+}
+
+.about .row .content .icon-container{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    margin-top: .5rem;
+}
+
+
+.about .row .content .icon-container .icon{
+    background: #eee;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0,0,0,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex: 1 1 17rem;
+    padding: 1.5rem 1rem;
+}
+
+.about .row .content .icon-container .icon i{
+    font-size: 2.5rem;
+    color: var(--orange);
+
+}
+
+
+.about .row .content .icon-container .icon span{
+    font-size: 1.5rem;
+    color: var(--black);
+    
+}
+
+
+/* customer location */
+.location .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.location .row .image{
+    flex: 1 1 45rem;
+}
+
+.location .row .image iframe{
+    width: 95%;
+    margin-top: 4rem;
+    padding-top: 1rem;
+}
+
+
+
+.location .row .content{
+    flex: 1 1 45rem;
+}
+
+.location .row .content h3{
+    color: var(--black);
+    font-size: 4rem;
+    padding: .5rem 0;
+}
+
+.location .row .content p{
+    color: var(--light-color);
+    font-size: 1.5rem;
+    padding: .5rem 0;
+    line-height: 2;
+}
+
+.location .row .content .icon-container{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    margin-top: .5rem;
+}
+
+
+.location .row .content .icon-container .icon{
+    background: #eee;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0,0,0,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex: 1 1 17rem;
+    padding: 1.5rem 1rem;
+}
+
+.location .row .content .icon-container .icon i{
+    font-size: 2.5rem;
+    color: var(--orange);
+
+}
+
+
+/* order */
+.order form{
+    max-width: 60rem;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: .1rem solid rgba(0,0,0,.2);
+    background-color: #fff;
+    padding: 1.5rem;
+    margin: 0 auto;
+}
+
+.order form .inputbox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.order form .inputbox .input{
+    width: 100%;
+}
+
+.order form .inputbox .input label{
+    display: block;
+    padding: .5rem 0;
+    font-size: 1.5rem;
+    color: var(--light-color);
+}
+
+.order form .inputbox .input input,
+.order form .inputbox .input textarea{
+    background: #eee;
+    border-radius: .5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.order form .inputbox .input input:focus,
+.order form .inputbox .input textarea:focus{
+    border: .1rem solid var(--orange);
+}
+
+.order form .inputbox .input textarea{
+    height: 20rem;
+    resize: none;
+}
+
+.order form .inputbox .input .required-color span{
+    color: red;
+}
+
+
+.error {
+    border-color: red;
+}
+
+.hide {
+    display: none;
+}
+
+
+/* footer */
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+}
+
+.footer .box-container .box h3{
+    padding: .5rem 0;
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.footer .box-container .box a{
+    display: block;
+    padding: .5rem 0;
+    font-size: 1.5rem;
+    color: var(--light-color);
+}
+
+.footer .box-container .box a:hover{
+    color: var(--orange);
+}
+
+.footer .credit{
+    text-align: center;
+    border-top: .1rem solid rgba(0,0,0,.1);
+    font-size: 2rem;
+    color: var(--black);
+    padding: .5rem;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.footer .credit span{
+    color: var(--orange);
+}
+
+
+@media (max-width:991px){
+
+    html{
+        font-size: 55%;
+    }
+
+    header{
+        padding: 2rem;
+    }
+
+    section{
+        padding: 1rem 2rem;
+    }
+}
+
+@media (max-width:768px){
+
+    header .icons #menu-bars{
+        display: inline-block;
+    }
+    
+    header .navbar{
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: #fff;
+        border-top: .1rem solid rgba(0,0,0,.2);
+        border-bottom: .1rem solid rgba(0,0,0,.2);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header .navbar.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    header .navbar a{
+        display: block;
+        padding: 1.5rem;
+        margin: 1rem;
+        font-size: 2rem;
+        background: #eee;
+    }
+
+    .home .home-slider .slide .content h3{
+        font-size: 5rem;
+    }
+
+    .collection .box-container .box .image img{
+        margin-left: 2.9rem;
+        height: 100%;
+        width: 80%;
+    }
+    
+    .collection .box-container .box .imagedrink img{
+        margin-left: 3.5rem;
+        height: 100%;
+        width: 58%;
+        border-radius: .5rem;
+    }
+
+    .location .row .image iframe{
+        width: 100%;
+        margin-top: 4rem;
+        padding-top: 1rem;
+    }
+    
+}
+
+
+@media (max-width:450px){
+
+    html{
+        font-size: 50%;
+    }
+
+    .jewelry .box-container .box img{
+        height: auto;
+        width: 100%;
+    }
+
+    .order form .inputbox .input{
+        width: 100%;
+    }
+
+    .location .row .image iframe{
+        width: 100%;
+        margin-top: 4rem;
+        padding-top: 1rem;
+    }
+    
+
+}
+

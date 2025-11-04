@@ -1,0 +1,178 @@
+:root {
+    --orange: #ff9f0d;
+    --black: #192a56;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #fff;
+    box-shadow: var(--box-shadow);
+    padding: 1rem 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .Logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--orange);
+    text-transform: capitalize;
+}
+
+.navbar a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: var(--black);
+}
+
+.navbar a.active,
+.navbar a:hover {
+    color: var(--orange);
+}
+
+.collection .heading {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 1rem;
+    color: var(--black);
+}
+
+.collection .sub-heading {
+    text-align: center;
+    color: var(--orange);
+    font-size: 1.8rem;
+}
+
+.collection .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    padding: 2rem 5%;
+}
+
+.collection .box {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    padding: 1.5rem;
+    transition: 0.3s;
+}
+
+.collection .box:hover {
+    transform: translateY(-5px);
+}
+
+.collection .box img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.collection .content h3 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.collection .content p {
+    color: var(--light-color);
+    font-size: 0.9rem;
+}
+
+.collection .price {
+    font-weight: bold;
+    color: var(--orange);
+    font-size: 1.1rem;
+}
+
+.btn-buy {
+    background: var(--orange);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    margin-top: 0.8rem;
+}
+
+.btn-buy:hover {
+    background: #ffa733;
+}
+
+/* Modal (Buy Form Overlay) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 400px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: .3rem;
+    color: var(--black);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: .6rem;
+    border-radius: .5rem;
+    border: 1px solid #ccc;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: .7rem;
+    background: var(--orange);
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background: #ffa733;
+}
