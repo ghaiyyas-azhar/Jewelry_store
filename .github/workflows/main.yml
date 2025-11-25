@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: YasLaptop
+    runs-on: self-hosting
 
     steps:
       - name: Test version
