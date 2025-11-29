@@ -26,7 +26,7 @@ if (isset($_POST['add_customer'])) { // Jika tombol tambah customer ditekan
     if ($check_email_stmt->num_rows > 0) { // Jika email sudah terdaftar
         $_SESSION['error'] = "Email sudah terdaftar. Gunakan email lain."; // Tampilkan pesan error
     } else {
-        // Jika email unik, lanjutkan insert
+        // HASH PASSWORD
         $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Enkripsi password
 
         $insert_stmt = $conn->prepare("INSERT INTO customer (name, email, phone, password, address) VALUES (?, ?, ?, ?, ?)"); // Siapkan query tambah data
@@ -53,11 +53,13 @@ if (isset($_POST['update_customer'])) { // Jika tombol update ditekan
     $phone = $_POST['phone']; // Ambil telepon baru
     $address = $_POST['address']; // Ambil alamat baru
     $password = $_POST['password']; // Ambil password baru dari form
-    
+
     // Cek apakah password diisi
     if (!empty($password)) { // Jika password diisi
-        // Jika password diisi, hash password baru
+        
+        // HASH PASSWORD BARU
         $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Enkripsi password baru
+        
         // Update semua termasuk password
         $update_stmt = $conn->prepare("UPDATE customer SET name = ?, email = ?, phone = ?, address = ?, password = ? WHERE customer_id = ?"); // Query update dengan password
         $update_stmt->bind_param("sssssi", $name, $email, $phone, $address, $hashed_password, $customer_id_to_update); // Bind data
@@ -66,14 +68,14 @@ if (isset($_POST['update_customer'])) { // Jika tombol update ditekan
         $update_stmt = $conn->prepare("UPDATE customer SET name = ?, email = ?, phone = ?, address = ? WHERE customer_id = ?"); // Query update tanpa password
         $update_stmt->bind_param("ssssi", $name, $email, $phone, $address, $customer_id_to_update); // Bind data
     }
-    
+
     if ($update_stmt->execute()) { // Jalankan query update
         $_SESSION['message'] = "Data customer berhasil diperbarui!"; // Pesan sukses
     } else {
         $_SESSION['error'] = "Gagal memperbarui data customer: " . $conn->error; // Pesan error
     }
     $update_stmt->close(); // Tutup statement update
-    
+
     header("Location: admin_editcustomer.php"); // Redirect ke halaman edit
     exit(); // Hentikan eksekusi
 }
@@ -81,13 +83,13 @@ if (isset($_POST['update_customer'])) { // Jika tombol update ditekan
 // --- LOGIKA UNTUK MENGHAPUS CUSTOMER ---
 if (isset($_GET['delete_customer_id'])) { // Jika tombol hapus ditekan
     $delete_id = $_GET['delete_customer_id']; // Ambil ID customer
-    
+
     // Hapus semua order terkait customer ini terlebih dahulu
     $delete_bookings_stmt = $conn->prepare("DELETE FROM booking_order WHERE customer_id = ?"); // Hapus semua data booking terkait
     $delete_bookings_stmt->bind_param("i", $delete_id); // Bind ID customer
     $delete_bookings_stmt->execute(); // Jalankan query
     $delete_bookings_stmt->close(); // Tutup statement
-    
+
     // Kemudian hapus customer
     $delete_stmt = $conn->prepare("DELETE FROM customer WHERE customer_id = ?"); // Query hapus customer
     $delete_stmt->bind_param("i", $delete_id); // Bind ID
@@ -97,21 +99,22 @@ if (isset($_GET['delete_customer_id'])) { // Jika tombol hapus ditekan
         $_SESSION['error'] = "Gagal menghapus customer: " . $conn->error; // Pesan error
     }
     $delete_stmt->close(); // Tutup statement
-    
+
     header("Location: admin_editcustomer.php"); // Redirect
     exit(); // Hentikan eksekusi
 }
 
 // --- LOGIKA: Ambil Semua Data Customer untuk Ditampilkan ---
- $customers = []; // Buat array kosong untuk menyimpan data customer
- $customers_stmt = $conn->prepare("SELECT customer_id, name, email, phone, address FROM customer ORDER BY name"); // Query ambil semua data customer
- $customers_stmt->execute(); // Jalankan query
- $customers_result = $customers_stmt->get_result(); // Ambil hasil query
- $customers = $customers_result->fetch_all(MYSQLI_ASSOC); // Simpan hasil ke array asosiatif
- $customers_stmt->close(); // Tutup statement
+$customers = []; // Buat array kosong untuk menyimpan data customer
+$customers_stmt = $conn->prepare("SELECT customer_id, name, email, phone, address FROM customer ORDER BY name"); // Query ambil semua data customer
+$customers_stmt->execute(); // Jalankan query
+$customers_result = $customers_stmt->get_result(); // Ambil hasil query
+$customers = $customers_result->fetch_all(MYSQLI_ASSOC); // Simpan hasil ke array asosiatif
+$customers_stmt->close();
 
- $conn->close(); // Tutup koneksi database
+$conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
