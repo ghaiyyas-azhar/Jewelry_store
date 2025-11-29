@@ -23,9 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Mengecek apakah form dikirim meng
     if (mysqli_num_rows($check_result) > 0) { // Jika ditemukan data dengan email yang sama
         echo "<script>alert('Email sudah digunakan!'); window.history.back();</script>"; // Tampilkan pesan peringatan dan kembali ke halaman sebelumnya
     } else {
-        // Simpan data baru
+        // Hash password sebelum disimpan
+        $password_hash = password_hash($password_input, PASSWORD_DEFAULT);
+
+        // Simpan data baru (password berisi hash)
         $query = "INSERT INTO customer (name, email, phone, address, password)
-                  VALUES ('$name', '$email', '$phone', '$address', '$password_input')"; // Query untuk menambahkan data pengguna baru ke tabel customer
+                  VALUES ('$name', '$email', '$phone', '$address', '$password_hash')"; // Query untuk menambahkan data pengguna baru ke tabel customer
         if (mysqli_query($conn, $query)) { // Jika proses insert berhasil
             echo "<script>alert('Pendaftaran berhasil! Silakan login.'); window.location='login.php';</script>"; // Tampilkan pesan sukses dan arahkan ke halaman login
         } else {
@@ -34,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Mengecek apakah form dikirim meng
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>

@@ -23,14 +23,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Mengecek apakah form dikirim deng
 
     if (mysqli_num_rows($result) == 1) { // Jika ada satu data ditemukan (email terdaftar)
         $user = mysqli_fetch_assoc($result); // Mengambil data pengguna dari hasil query
-        if ($password_input === $user['password']) { // Mengecek apakah password yang dimasukkan sama dengan yang ada di database
+
+        // password_verify digunakan untuk memeriksa password input dengan hash yang tersimpan di database
+        if (password_verify($password_input, $user['password'])) { // Jika password cocok dengan hash
+
             $_SESSION['username'] = $user['name']; // Menyimpan nama pengguna ke dalam sesi
             $_SESSION['customer_id'] = $user['customer_id']; // Menyimpan ID pengguna ke dalam sesi
+
             header("Location: mainpage.php"); // Mengarahkan pengguna ke halaman utama setelah login berhasil
             exit(); // Menghentikan eksekusi skrip
+
         } else {
             echo "<script>alert('Password salah!');</script>"; // Menampilkan peringatan jika password salah
         }
+
     } else {
         echo "<script>alert('Email tidak ditemukan!');</script>"; // Menampilkan peringatan jika email tidak terdaftar
     }
