@@ -139,7 +139,7 @@ echo '
 <!-- Popular Jewelry Section -->
 <section class="jewelry" id="jewelry">
 <h3 class="sub-heading">Our Jewelry</h3>
-<h1 class="heading">Popular Jewelry</h1>
+<h1 class="heading">Best sell Jewelry</h1>
 <div class="box-container">
 <?php
  $query = "SELECT * FROM collection ORDER BY RAND() LIMIT 5"; // Query untuk mengambil 5 data acak dari tabel 'collection'
