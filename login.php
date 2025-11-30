@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Mengecek apakah form dikirim deng
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Login - Jewelry Store</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="/css/login.css?v=3">
 </head>
 <body>
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
