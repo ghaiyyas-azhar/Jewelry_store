@@ -9,7 +9,7 @@ if (!$conn) { // Mengecek apakah koneksi ke database berhasil
 }
 
 // Saat user menekan tombol daftar
-if ($_SERVER["REQUEST_METHOD"] == "POST") { // Mengecek apakah form dikirim menggunakan metode POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") { // Mengecek apakah form dikirim menggunakan metode POST cuman nambah biar ada screenshot bukti di paper
     $name = mysqli_real_escape_string($conn, $_POST['name']); // Mengamankan input nama dari karakter berbahaya
     $email = mysqli_real_escape_string($conn, $_POST['email']); // Mengamankan input email
     $phone = mysqli_real_escape_string($conn, $_POST['phone']); // Mengamankan input nomor telepon
